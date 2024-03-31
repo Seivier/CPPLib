@@ -8,10 +8,13 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON) # Importante para un buen autocompletado!!
 set(CPPLIB_SRC 
   "${PROJECT_SOURCE_DIR}/include/geom/point.h"
   "${PROJECT_SOURCE_DIR}/include/geom/segment.h"
+  "${PROJECT_SOURCE_DIR}/include/geom/figure.h"
+  "${PROJECT_SOURCE_DIR}/include/geom/triangle.h"
+  "${PROJECT_SOURCE_DIR}/include/geom/circle.h"
 )
 
 add_library(${PROJECT_NAME} INTERFACE ${CPPLIB_SRC})
-target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
+target_include_directories(${PROJECT_NAME} INTERFACE ${PROJECT_SOURCE_DIR}/include)
 
 include(CTest)
 add_subdirectory(extern)

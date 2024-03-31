@@ -1,4 +1,5 @@
 BUILD=build
+WDIRS=src/ test/ include/
 
 .PHONY: build init clean test run
 
@@ -10,10 +11,10 @@ build:
 	cmake --build $(BUILD) -j 10
 
 test:
-	ctest --test-dir $(BUILD) --output-on-failure
+	@GTEST_COLOR=1 ctest --test-dir $(BUILD) --output-on-failure
 
 clean:
 	rm -rf .cache Testing build
 
 watch: init
-	@find src/ test/ | entr -s "make build"
+	@find $(WDIRS) | entr -s "make build"

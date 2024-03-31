@@ -1,5 +1,6 @@
 #ifndef INCLUDE_GEOM_POINT_H_
 #define INCLUDE_GEOM_POINT_H_
+#include <iostream>
 #include <ostream>
 
 template <typename T>
@@ -15,21 +16,30 @@ class Point {
   Point<T>& operator=(const Point<T>& other) {
     x_ = other.x();
     y_ = other.y();
+    return *this;
   }
 
   Point<T>& operator*=(T factor) {
     x_ *= factor;
     y_ *= factor;
+    return *this;
   }
 
   Point<T>& operator+=(const Point<T>& other) {
     x_ += other.x();
     y_ += other.y();
+    return *this;
   }
 
   Point<T>& operator-=(const Point<T>& other) {
     x_ -= other.x();
     y_ -= other.y();
+    return *this;
+  }
+
+  Point<T> operator-(const Point<T>& other) const {
+    Point<T> p(*this);
+    return p -= other;
   }
 
   inline bool operator==(const Point<T>& other) const {
@@ -41,8 +51,7 @@ class Point {
   }
 
   friend std::ostream& operator<<(std::ostream& os, const Point<T>& p) {
-    os << "Point{" << p.x() << ", " << p.y() << ", "
-       << "}";
+    os << "Point{" << p.x() << ", " << p.y() << "}";
     return os;
   }
 
