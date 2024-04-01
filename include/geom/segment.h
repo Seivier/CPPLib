@@ -9,7 +9,6 @@ class Segment {
  public:
   Segment(const Point<T>& first, const Point<T>& second)
       : f_(first), s_(second) {}
-  Segment() : f_(), s_() {}
 
   inline const Point<T>& first() const { return f_; }
   inline Point<T>& first() { return f_; }
